@@ -18,7 +18,7 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col('fruit
 #st.dataframe(data=my_dataframe, use_container_width=True)
 
 pd_df = my_dataframe.to_pandas()
-#st.dataframe(pd_df)
+st.dataframe(pd_df)
 
 ingredients_list = st.multiselect(
     "Choose up to 5 ingredients:",
@@ -34,7 +34,7 @@ if ingredients_list:
     for fruit_choosen in ingredients_list:
         ingredients_string += fruit_choosen + ' '
         
-        search_on = pd_df.loc[pd.df['fruit_name'] == fruit_choosen, 'search_on'\.iloc[0]
+        search_on = pd_df.loc[pd.df['fruit_name'] == fruit_choosen, 'search_on'].iloc[0]
         st.write('The search value for ', fruit_choosen, ' is ', search_on, '.')
         st.subheader(fruit_choosen + ' Nutrition Information')
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + fruit_choosen)
